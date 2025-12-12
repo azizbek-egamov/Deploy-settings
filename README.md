@@ -279,6 +279,8 @@ sudo nano /etc/nginx/sites-available/myproject
 server {
     server_name server_domain_or_IP;
 
+    client_max_body_size 999M;
+
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static/ {
