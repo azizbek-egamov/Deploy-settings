@@ -235,6 +235,23 @@ Environment="DJANGO_SETTINGS_MODULE=set_app.settings"
 ExecStart=/root/Api_Ardent/venv/bin/gunicorn --workers 3 --bind unix:/root/Api_Ardent/set_app/set_app.sock set_app.asgi:application -k uvicorn.workers.UvicornWorker
 ```
 
+2.1. Telegram bot:
+
+```bash
+[Unit]
+Description=Runbot Django Command
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/project
+ExecStart=/root/project/venv/bin/python manage.py runbot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
 3. Сохраните файл (Ctrl+O, Enter) и выйдите (Ctrl+X).
 4. Примените изменения и запустите сервис:
 
